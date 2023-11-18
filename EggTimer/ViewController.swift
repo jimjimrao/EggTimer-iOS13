@@ -9,23 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let softTime = 5
-    let mediumTime = 7
-    let hardTime = 12
+    let timeDict : [String: Int] = [
+        "Soft": 300,
+        "Medium": 420,
+        "Hard": 720
+    ]
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
-        let hardness = sender.currentTitle?.lowercased()
-        let timeType: String = hardness! + "Time"
-        switch timeType{
-        case "softTime":
-            print(softTime)
-        case "mediumTime":
-            print(mediumTime)
-        case "hardTime":
-            print(hardTime)
-        default:
-            print()
+        let hardness = sender.currentTitle!
+        let result = timeDict[hardness]!
+        print(result)
+        
         }
         
     }
-}
+
