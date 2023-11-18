@@ -14,23 +14,29 @@ class ViewController: UIViewController {
         "Medium": 420,
         "Hard": 720
     ]
-    func countdown(seconds: Int) {
-        var remainingSeconds = seconds
-        
-        while remainingSeconds > 0 {
-            print("\(remainingSeconds) seconds.")
-            remainingSeconds -= 1
-            sleep(1) // Pauses execution for 1 second
-        }
-    }
+    var secondsRemaining = 60
+    
+    var timer = Timer()
+    
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
+        
+        timer.invalidate() // stops previous timer from continuing
+        
         let hardness = sender.currentTitle!
-        let result = timeDict[hardness]!
-        print(result)
-        countdown(seconds: result)
+        secondsRemaining = timeDict[hardness]!
+      
+        // re-initialize timer with new info
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
         }
+
+    @objc func updateTimer(){
+        if secondsRemaining > 0 {
+            print("\(secondsRemaining) seconds.")
+            secondsRemaining -= 1
+        }
+    }
         
     }
 
