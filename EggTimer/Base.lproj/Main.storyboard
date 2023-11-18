@@ -23,8 +23,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9S4-l0-41N" userLabel="Title View">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="228.33333333333334"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How would you like your eggs done?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-vh-HlJ">
-                                                <rect key="frame" x="30" y="77" width="298" height="74"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How would you like your eggs done?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-vh-HlJ">
+                                                <rect key="frame" x="24" y="85.666666666666657" width="310" height="57.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -32,7 +32,9 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="0Hb-vh-HlJ" firstAttribute="centerX" secondItem="9S4-l0-41N" secondAttribute="centerX" id="9cd-Av-rys"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Hb-vh-HlJ" secondAttribute="trailing" constant="24" id="sgW-mx-XBv"/>
                                             <constraint firstItem="0Hb-vh-HlJ" firstAttribute="centerY" secondItem="9S4-l0-41N" secondAttribute="centerY" id="vDa-09-QjU"/>
+                                            <constraint firstItem="0Hb-vh-HlJ" firstAttribute="leading" secondItem="9S4-l0-41N" secondAttribute="leading" constant="24" id="vsC-g3-0W3"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wAa-qa-eeB" userLabel="Egg Stack View">

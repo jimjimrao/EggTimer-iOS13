@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     let timeDict : [String: Int] = [
@@ -18,6 +19,16 @@ class ViewController: UIViewController {
     var secondsPassed = 60
     
     var timer = Timer()
+    var audio: AVPlayer!
+    
+    func playAlarm() {
+        // need to declare local path as url
+        let url = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")
+        // now use declared path 'url' to initialize the player
+        audio = AVPlayer.init(url: url!)
+        // after initialization play audio its just like click on play button
+        audio.play()
+    }
     
     @IBOutlet weak var MainText: UILabel!
     
@@ -42,15 +53,13 @@ class ViewController: UIViewController {
         }
 
     @objc func updateTimer(){
+        let percentageProgress = Float(secondsPassed)/Float(totalTime)
+        progressBar.progress = percentageProgress
         
         if secondsPassed < totalTime {
-            let percentageProgress = Float(secondsPassed)/Float(totalTime)
-            progressBar.progress = percentageProgress
             secondsPassed += 1
-            
-        }
-        else {
-            progressBar.progress = 1.0
+        }else {
+            playAlarm()
             timer.invalidate()
             MainText.text = "Done!"
         }
