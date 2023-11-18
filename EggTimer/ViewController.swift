@@ -14,8 +14,8 @@ class ViewController: UIViewController {
         "Medium": 4,
         "Hard": 7
     ]
-    var secondsRemaining = 60
-    var totalSeconds = 60
+    var totalTime = 60
+    var secondsPassed = 60
     
     var timer = Timer()
     
@@ -26,16 +26,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             // Additional setup if needed
-        progressBar.progress = 1.0
+        progressBar.progress = 0.0
         }
     @IBAction func hardnessSelected(_ sender: UIButton) {
-        progressBar.progress = 1.0
-        
         timer.invalidate() // stops previous timer from continuing
-        
+        MainText.text = "Eggs Boiling..."
         let hardness = sender.currentTitle!
-        secondsRemaining = timeDict[hardness]!
-        totalSeconds = secondsRemaining
+        totalTime = timeDict[hardness]!
+        secondsPassed = 0
         
         
         // re-initialize timer with new info
@@ -44,12 +42,15 @@ class ViewController: UIViewController {
         }
 
     @objc func updateTimer(){
-        progressBar.progress = (Float(secondsRemaining) / Float(totalSeconds))
-        if secondsRemaining > 0 {
-            MainText.text = String(secondsRemaining)
-            secondsRemaining -= 1
+        
+        if secondsPassed < totalTime {
+            let percentageProgress = Float(secondsPassed)/Float(totalTime)
+            progressBar.progress = percentageProgress
+            secondsPassed += 1
+            
         }
         else {
+            progressBar.progress = 1.0
             timer.invalidate()
             MainText.text = "Done!"
         }
